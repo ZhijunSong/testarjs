@@ -12,6 +12,23 @@
 
   <body style="margin: 0; overflow: hidden;">
 
+
+  AFRAME.registerComponent('foo', {
+      init:   function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+          }
+        }
+      init: function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude +
+          "<br>Longitude: " + position.coords.longitude;
+        }
+
+      init: var x = document.getElementById("demo");
+
+  });
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
@@ -30,21 +47,5 @@
       <p id="demo" color="white"></p>
     </a-scene>
 
-    <script>
-    var x = document.getElementById("demo");
-
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
-
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude +
-      "<br>Longitude: " + position.coords.longitude;
-    }
-    </script>
   </body>
 </html>
