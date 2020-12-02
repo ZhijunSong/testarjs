@@ -1,37 +1,43 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>GeoAR.js demo</title>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+   <head>
 
-  </head>
+      <script type = "text/javascript">
 
-  <body style="margin: 0; overflow: hidden;">
+         function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            alert("Latitude : " + latitude + " Longitude: " + longitude);
+         }
 
-    <p>Click the button to get your coordinates.</p>
+         function errorHandler(err) {
+            if(err.code == 1) {
+               alert("Error: Access is denied!");
+            } else if( err.code == 2) {
+               alert("Error: Position is unavailable!");
+            }
+         }
 
-    <button onclick="getLocation()">Try It</button>
+         function getLocation() {
 
-    <p id="demo"></p>
-    <script>
-    var x = document.getElementById("demo");
-    function getLocation() {
-      if (navigator.geolocation) {
-          console.log(navigator.geolocation.getCurrentPosition());
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
+            if(navigator.geolocation) {
 
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude +
-      "<br>Longitude: " + position.coords.longitude;
-    }
-    </script>
+               // timeout at 60000 milliseconds (60 seconds)
+               var options = {timeout:60000};
+               navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+            } else {
+               alert("Sorry, browser does not support geolocation!");
+            }
+         }
 
-  </body>
+      </script>
+   </head>
+   <body>
+
+      <form>
+         <input type = "button" onclick = "getLocation();" value = "Get Location"/>
+      </form>
+
+   </body>
 </html>
