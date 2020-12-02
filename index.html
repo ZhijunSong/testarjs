@@ -12,43 +12,26 @@
 
   <body style="margin: 0; overflow: hidden;">
 
-   <script>
+    <p>Click the button to get your coordinates.</p>
 
-   AFRAME.registerComponent('foo', {
-       init:   function getLocation() {
-           if (navigator.geolocation) {
-             navigator.geolocation.getCurrentPosition(showPosition);
-           } else {
-             x.innerHTML = "Geolocation is not supported by this browser.";
-           }
-         },
-       init: function showPosition(position) {
-           x.innerHTML = "Latitude: " + position.coords.latitude +
-           "<br>Longitude: " + position.coords.longitude;
-         },
-        init: var x = document.getElementById("demo");
+    <button onclick="getLocation()">Try It</button>
 
-   });
-   </script>
+    <p id="demo"></p>
+    <script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+      if (navigator.geolocation) {
+          console.log(navigator.geolocation.getCurrentPosition().coords.latitude);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
 
-<!--
-    <a-scene
-      vr-mode-ui="enabled: false"
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false;"
-    >
-      <a-text
-        value="This content will always face you."
-        look-at="[gps-camera]"
-        scale="120 120 120"
-        rotation="0 90 0"
-        gps-entity-place="latitude:"+ navigator.geolocation.getCurrentPosition.coords.latitude+"; longitude:"+ navigator.geolocation.getCurrentPosition.coords.longitude ";"
-      ></a-text>
-
-      <a-camera gps-camera rotation-reader> </a-camera>
-      <!-- <button oneclick="getLocation()">Get Location</button>
-      <p id="demo" color="white"></p> -->
-    </a-scene> -->
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+      "<br>Longitude: " + position.coords.longitude;
+    }
+    </script>
 
   </body>
 </html>
