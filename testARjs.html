@@ -22,12 +22,14 @@
         look-at="[gps-camera]"
         scale="120 120 120"
         rotation="0 90 0"
-        gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"
+        gps-entity-place="latitude:"+ position.coords.latitude+"; longitude:"+ position.coords.longitude ";"
       ></a-text>
+
       <a-camera gps-camera rotation-reader> </a-camera>
+      <button oneclick="getLocation()">Get Location</button>
+      <p id="demo" color="white"></p>
     </a-scene>
-    <button oneclick="getLocation()">Get Location</button>
-    <p id="demo" color="white"></p>
+
     <script>
     var x = document.getElementById("demo");
 
