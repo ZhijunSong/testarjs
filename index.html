@@ -13,7 +13,6 @@
   <body style="margin: 0; overflow: hidden;">
 
    <script>
-   var x = document.getElementById("demo");
 
    AFRAME.registerComponent('foo', {
        init:   function getLocation() {
@@ -27,9 +26,12 @@
            x.innerHTML = "Latitude: " + position.coords.latitude +
            "<br>Longitude: " + position.coords.longitude;
          }
+        init: var x = document.getElementById("demo");
+
    });
    </script>
 
+<!--
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
@@ -40,13 +42,13 @@
         look-at="[gps-camera]"
         scale="120 120 120"
         rotation="0 90 0"
-        gps-entity-place="latitude:"+ position.coords.latitude+"; longitude:"+ position.coords.longitude ";"
+        gps-entity-place="latitude:"+ navigator.geolocation.getCurrentPosition.coords.latitude+"; longitude:"+ navigator.geolocation.getCurrentPosition.coords.longitude ";"
       ></a-text>
 
       <a-camera gps-camera rotation-reader> </a-camera>
-      <button oneclick="getLocation()">Get Location</button>
-      <p id="demo" color="white"></p>
-    </a-scene>
+      <!-- <button oneclick="getLocation()">Get Location</button>
+      <p id="demo" color="white"></p> -->
+    </a-scene> -->
 
   </body>
 </html>
