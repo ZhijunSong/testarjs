@@ -12,23 +12,24 @@
 
   <body style="margin: 0; overflow: hidden;">
 
+   <script>
+   var x = document.getElementById("demo");
 
-  AFRAME.registerComponent('foo', {
-      init:   function getLocation() {
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-          } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-          }
-        }
-      init: function showPosition(position) {
-          x.innerHTML = "Latitude: " + position.coords.latitude +
-          "<br>Longitude: " + position.coords.longitude;
-        }
+   AFRAME.registerComponent('foo', {
+       init:   function getLocation() {
+           if (navigator.geolocation) {
+             navigator.geolocation.getCurrentPosition(showPosition);
+           } else {
+             x.innerHTML = "Geolocation is not supported by this browser.";
+           }
+         }
+       init: function showPosition(position) {
+           x.innerHTML = "Latitude: " + position.coords.latitude +
+           "<br>Longitude: " + position.coords.longitude;
+         }
+   });
+   </script>
 
-      init: var x = document.getElementById("demo");
-
-  });
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
