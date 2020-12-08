@@ -22,6 +22,16 @@
            });
        };
      </script>
+
+     <script>
+     sceneEl.addEventListener("markerFound", (e) => {
+       isMarkerVisible = true;
+     });
+
+     sceneEl.addEventListener("markerLost", (e) => {
+       isMarkerVisible = false;
+     });
+     </script>
     <style>
   .arjs-loader {
     height: 100%;
@@ -92,6 +102,9 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
+      renderer="logarithmicDepthBuffer: true;"
+      gesture-detector
+      id="scene"
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
     <a-entity
