@@ -7,6 +7,7 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src = "script.js"></script>
     <style>
   .arjs-loader {
     height: 100%;
@@ -27,80 +28,11 @@
     color: white;
   }
 </style>
+
   </head>
 
   <body style="margin: 0; overflow: hidden;">
-    <script>
-              // getting places from APIs
-      function loadPlaces(position) {
-        const params = {
-            radius: 300,    // search places not farther than this value (in meters)
-            clientId: 'ILAXZHLG1YGODF5TOET4ICFT3I1CFJN5ZR1CRJQHDDS1IDI2',
-            clientSecret: 'CU54JRCCZPWDQRRLC1BNT3FJSEJGDV1LOYCOHVOEWEK53FOG',
-            version: '20300101',    // foursquare versioning, required but unuseful for this demo
-        };
-
-        // CORS Proxy to avoid CORS problems
-        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-
-        // Foursquare API (limit param: number of maximum places to fetch)
-        const endpoint = `${corsProxy}https://api.foursquare.com/v2/venues/search?intent=checkin
-            &ll=${position.latitude},${position.longitude}
-            &radius=${params.radius}
-            &client_id=${params.clientId}
-            &client_secret=${params.clientSecret}
-            &limit=30
-            &v=${params.version}`;
-        return fetch(endpoint)
-            .then((res) => {
-                return res.json()
-                    .then((resp) => {
-                        return resp.response.venues;
-                    })
-            })
-            .catch((err) => {
-                console.error('Error with places API', err);
-            })
-      };
-
-
-      window.onload = () => {
-        const scene = document.querySelector('a-scene');
-
-        // first get current user location
-        return navigator.geolocation.getCurrentPosition(function (position) {
-
-            // than use it to load from remote APIs some places nearby
-            loadPlaces(position.coords)
-                .then((places) => {
-                    places.forEach((place) => {
-                        const latitude = place.location.lat;
-                        const longitude = place.location.lng;
-
-                        // add place name
-                        const placeText = document.createElement('a-link');
-                        placeText.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                        placeText.setAttribute('title', place.name);
-                        placeText.setAttribute('scale', '15 15 15');
-
-                        placeText.addEventListener('loaded', () => {
-                            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-                        });
-
-                        scene.appendChild(placeText);
-                    });
-                })
-        },
-            (err) => console.error('Error in retrieving position', err),
-            {
-                enableHighAccuracy: true,
-                maximumAge: 0,
-                timeout: 27000,
-            }
-        );
-      };
-    </script>
-    <a-scene
+    <!-- <a-scene
       vr-mode-ui="enabled: false"
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
@@ -115,6 +47,17 @@
       >
       </a-entity>
       <a-camera gps-camera="minDistance: 10;" rotation-reader> </a-camera>
-    </a-scene>
+    </a-scene> -->
+
+          <a-scene
+          cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
+          raycaster="objects: [gps-entity-place];"
+          vr-mode-ui="enabled: false"
+      embedded
+      arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+
+          <a-camera gps-camera rotation-reader>
+      </a-camera>
+      </a-scene>
   </body>
 </html>
