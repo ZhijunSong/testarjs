@@ -79,6 +79,5 @@ function dynamicLoadPlaces(position) {
         .catch((err) => {
             console.error('Error with places API', err);
         })
-        const pos= document.querySelector("a-entity");
-        pos.setAttribute('gps-entity-place',`latitude:${position.latitude};longitude:${position.longitude};`);
+
 };
