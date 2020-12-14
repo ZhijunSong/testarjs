@@ -98,20 +98,18 @@
 
 
     <a-entity
-    rotation="0 0 0"
+    rotation="90 180 0"
     look-at="[gps-camera]"
     scale="100 100 100"
-    position="0 0 0"
+    position="0 -10 -10"
     gps-entity-place="latitude: 40.744308; longitude:-73.941856;">
-    <a-image
+    <image
     src="#my-image"
     width="2"
     height="2"
-    rotation="90 180 0"
     visible="true"
-    position="0 -10 -10"
     >
-    </a-image>
+  </image>
       </a-entity>
       <a-camera gps-camera="minDistance: 10;" rotation-reader> </a-camera>
     </a-scene>
