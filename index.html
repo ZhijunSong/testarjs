@@ -93,19 +93,9 @@
     >
     <a-assets>
  <img id="my-image" src ="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/ZhijunSong/testarjs/main/assets/mask.png">
-</a-assets>
+    </a-assets>
       <!-- gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/ZhijunSong/testarjs/main/assets/doghouse0908.gltf" -->
-    <a-image
-    src="#my-image"
-    width="2"
-    height="2"
-    rotation="90 180 0"
-    visible="true"
-    position="0 -10 -10"
-    gps-entity-place="latitude: 40.744308; longitude:-73.941856;"
 
-    >
-    </a-image>
 
     <a-entity
     rotation="0 90 0"
@@ -113,6 +103,15 @@
     scale="100 100 100"
     position="3 -5 -5"
     gps-entity-place="latitude: 40.744308; longitude:-73.941856;">
+    <a-image
+    src="#my-image"
+    width="2"
+    height="2"
+    rotation="90 180 0"
+    visible="true"
+    position="0 -10 -10"
+    >
+    </a-image>
       </a-entity>
       <a-camera gps-camera="minDistance: 10;" rotation-reader> </a-camera>
     </a-scene>
