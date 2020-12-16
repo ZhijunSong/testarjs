@@ -1,5 +1,6 @@
 window.onload = () => {
-    const image = document.querySelector('a-image');
+    const scene = document.querySelector('a-scene');
+    const icon = document.querySelector('a-image');
 
     const clickListener = function (ev) {
         ev.stopPropagation();
@@ -23,8 +24,7 @@ window.onload = () => {
             }, 1500);
          }
      };
-     image.addEventListener('click', clickListener);
-
-    scene.appendChild(image);
+    icon.addEventListener('click', clickListener);
+    scene.appendChild(icon);
 
 };
