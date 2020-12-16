@@ -89,16 +89,7 @@
     color: white;
   }
   .buttons {
-    position: absolute;
-    bottom: 0;
-    left: -40%;
-    top: 10px;
-    width: 100%;
-    height: 5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
+
   }
   .icons {
     position: absolute;
@@ -121,6 +112,34 @@
     color: white;
     width: 5em;
     height: 2.5em;
+  }
+  .dropdown {
+    position: absolute;
+    bottom: 0;
+    left: -40%;
+    top: 10px;
+    width: 100%;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  /* position: relative;
+  display: inline-block; */
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
 </style>
 
@@ -177,8 +196,15 @@
       </a-entity>
       <a-camera gps-camera="minDistance: 10;" rotation-reader> </a-camera>
     </a-scene>
-    <div class="buttons">
+    <div class="dropdown">
       <button class="say-hi-button">Menu</button>
+      <div class="dropdown-content">
+        <li>back to main</li>
+        <li>startover</li>
+        <li>resume</li>
+        <li>stop</li>
+
+      </div>
     </div>
     <div class="icons">
       <!-- <i class="fas fa-angle-left"></i>
