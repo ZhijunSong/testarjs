@@ -28,7 +28,7 @@
        //     target.addEventListener('click',clickListener);
        //     // scene.appendChild(target);
        // };
-     AFRAME.registerComponent('mask', {
+     AFRAME.registerComponent('panel', {
         init: function() {
           this.el.addEventListener('click', () => {
             alert('Clicked!')
@@ -184,8 +184,7 @@
         <!-- gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/ZhijunSong/testarjs/main/assets/doghouse0908.gltf" -->
 
     <a-entity
-    mask
-    src="#my-image"
+    material="src:"#my-image""
     width="2"
     height="2"
     rotation="90 180 0"
@@ -195,7 +194,7 @@
   </a-entity>
     <a-entity
     name="pin"
-    src="#pins"
+    material="src:"#pins""
     width="2"
     height="2"
     rotation="0 0 0"
@@ -204,6 +203,7 @@
     >
   </a-enity>
     <a-entity
+    panel
     rotation="0 90 0"
     look-at="[gps-camera]"
     scale="100 100 100"
