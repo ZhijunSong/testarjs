@@ -1,6 +1,6 @@
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-    const icon = document.querySelector('a-image');
+    const icon = document.querySelector('#masks');
 
     //
     //
@@ -33,3 +33,14 @@ window.onload = () => {
     scene.appendChild(icon);
 
 };
+
+// window.onload = function () {
+//   document
+//     .querySelector(".say-hi-button")
+//     .addEventListener("click", function () {
+//       // here you can change also a-scene or a-entity properties, like
+//       // changing your 3D model source, size, position and so on
+//       // or you can just open links, trigger actions...
+//       alert("Hi there!");
+//     });
+// };
