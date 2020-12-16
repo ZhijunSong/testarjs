@@ -28,11 +28,11 @@
        //     target.addEventListener('click',clickListener);
        //     // scene.appendChild(target);
        // };
-     AFRAME.registerComponent('panel', {
+     AFRAME.registerComponent('masks', {
         init: function() {
-          this.el.addEventListener('click', () => {
-            alert('Clicked!')
-        });
+      this.el.addEventListener('click', () => {
+          alert('Clicked!')
+      });
       }});
      </script>
      <link rel="stylesheet" href="index.css">
@@ -176,13 +176,6 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
-    <a-mixin
-     id="flat"
-     geometry="primitive: plane; width: 0.544768; height: 0.786432"
-     material="color: white; shader: flat"
-     material="shader: flat"
-     position="0 0 0.005"
-    ></a-mixin>
     <a-assets>
 
     <img id="my-image" src ="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/ZhijunSong/testarjs/main/assets/mask.png">
@@ -190,29 +183,30 @@
     </a-assets>
         <!-- gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/ZhijunSong/testarjs/main/assets/doghouse0908.gltf" -->
 
-    <a-entity
-    material="src:"#my-image""
-    mixin="flat"
+    <a-image
+    id ="masks"
+    name="mask"
+    src="#my-image"
     width="2"
     height="2"
     rotation="90 180 0"
     visible="true"
     position="0 -10 -10"
     >
-  </a-entity>
-    <a-entity
+    </a-image>
+    <a-image
     name="pin"
-    mixin="flat"
-    material="src:"#pins""
+    src="#pins"
     width="2"
     height="2"
     rotation="0 0 0"
     visible="true"
     position="0 -10 -20"
     >
-  </a-enity>
+
+
+    </a-image>
     <a-entity
-    panel
     rotation="0 90 0"
     look-at="[gps-camera]"
     scale="100 100 100"
