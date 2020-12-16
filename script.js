@@ -2,19 +2,23 @@ window.onload = () => {
     const scene = document.querySelector('a-scene');
     const icon = document.querySelector('a-image');
 
-    const clickListener = function (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
+    //
+    //
+    // document
+    //   .querySelector(".say-hi-button")
+    //   .addEventListener("click", function () {
+    //     // here you can change also a-scene or a-entity properties, like
+    //     // changing your 3D model source, size, position and so on
+    //     // or you can just open links, trigger actions...
+    //     alert("Hi there!");
+    //   });
+    const clickListener = function () {
 
-        const name = ev.target.getAttribute('name');
-        const el = ev.detail.intersection && ev.detail.intersection.object.el;
-
-        if (el && el === ev.target) {
             // after click, we are adding a label with the name of the place
             const label = document.createElement('span');
             const container = document.createElement('div');
             container.setAttribute('id', 'place-label');
-            label.innerText = name;
+            label.innerText = 'Talk to the mask.';
             container.appendChild(label);
             document.body.appendChild(container);
 
