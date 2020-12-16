@@ -1,6 +1,6 @@
 window.onload = () => {
     const scene = document.querySelector('a-scene');
-    const icon = document.querySelector('#masks');
+    const icon = document.querySelector('a-image');
 
     //
     //
