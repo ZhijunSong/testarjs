@@ -119,6 +119,41 @@
     display: inline-block;
   }
 
+  .bottomicon {
+    position: absolute;
+    height: 5em;
+    right:5%;
+    bottom:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color:#FFB11B;
+  }
+  .bottomleft {
+    position: absolute;
+    height: 5em;
+    left:5%;
+    bottom:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color:#FFB11B;
+  }
+  .bottomright {
+    position: absolute;
+    height: 5em;
+    right:5%;
+    bottom:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    color:#FFB11B;
+  }
+
+
 </style>
 
   </head>
@@ -188,10 +223,18 @@
     <div class="icons">
 
       <i class="fas fa-volume-up"></i>
-      <i class="fas fa-angle-left"></i>
-      <i class="fas fa-angle-right"></i>
+
 
     </div>
+    <div class="bottomleft">
+      <i class="fas fa-angle-left"></i><a>Back</a>
+
+    </div>
+    <div class="bottomright">
+
+      <a>Next</a><i class="fas fa-angle-right"></i>
+    </div>
+
 
   </body>
 </html>
