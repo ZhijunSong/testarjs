@@ -1,5 +1,6 @@
 window.onload = () => {
-    const scene = document.querySelector('a-scene');
+    const image = document.querySelector('a-image');
+
     const clickListener = function (ev) {
         ev.stopPropagation();
         ev.preventDefault();
@@ -12,7 +13,7 @@ window.onload = () => {
             const label = document.createElement('span');
             const container = document.createElement('div');
             container.setAttribute('id', 'place-label');
-            label.innerText = "tap to start";
+            label.innerText = name;
             container.appendChild(label);
             document.body.appendChild(container);
 
@@ -22,9 +23,8 @@ window.onload = () => {
             }, 1500);
          }
      };
-     icon.addEventListener('click', clickListener);
+     image.addEventListener('click', clickListener);
 
-     scene.appendChild(icon);
-
+    scene.appendChild(image);
 
 };
